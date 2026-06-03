@@ -160,6 +160,26 @@
   --primary-foreground: #F5F2EC;
 }
 
+/* Engineering notebook grid background on light mode layout bases */
+.light body,
+.light .bg-background,
+.light [class*="bg-\\[var\\(--rune-bg-base\\)\\]"],
+.light [class*="bg-background"] {
+  background-image: 
+    linear-gradient(rgba(139, 94, 26, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 94, 26, 0.025) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Custom CMDK search dialog selections matching Rune style */
+[data-selected="true"] {
+  background-color: var(--rune-bg-subtle) !important;
+  color: var(--rune-accent) !important;
+  border-left: 2px solid var(--rune-accent) !important;
+  padding-left: 10px !important;
+}
+
+
 /* ==========================================================================
    TAILWIND THEME
    ========================================================================== */
