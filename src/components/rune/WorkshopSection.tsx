@@ -22,45 +22,34 @@ const ITEMS: WorkshopItem[] = [
     title: "Lexer Scanner",
     desc: "A pure character-by-character scan loop. Consumes source streams, identifies keyword lexemes, literal numbers/strings, and variables without RegEx shortcuts.",
     icon: <Settings className="size-6 text-[var(--rune-accent)]" />,
-    filename: "lexer.rs",
-    lang: "rust",
-    code: `pub struct Lexer {
-    source: String,
-    chars: Vec<char>,
-    start: usize,
-    current: usize,
-    line: usize,
-}
+    filename: "lexer/lexer.py",
+    lang: "python",
+    code: `class Lexer:
+    def __init__(self, text: str):
+        self.text = text
+        self.pos = 0
+        self.line = 1
+        self.column = 1
+        self.tokens = []
 
-impl Lexer {
-    pub fn scan_token(&mut self) -> Token {
-        self.skip_whitespace();
-        if self.is_at_end() {
-            return self.make_token(TokenType::EOF);
-        }
-        
-        let c = self.advance();
-        if c.is_alphabetic() {
-            return self.identifier();
-        }
-        if c.is_numeric() {
-            return self.number();
-        }
-
-        match c {
-            '(' => self.make_token(TokenType::LeftParen),
-            ')' => self.make_token(TokenType::RightParen),
-            '{' => self.make_token(TokenType::LeftBrace),
-            '}' => self.make_token(TokenType::RightBrace),
-            ';' => self.make_token(TokenType::Semicolon),
-            ',' => self.make_token(TokenType::Comma),
-            '+' => self.make_token(TokenType::Plus),
-            '-' => self.make_token(TokenType::Minus),
-            '*' => self.make_token(TokenType::Star),
-            _ => self.error_token("Unexpected character."),
-        }
-    }
-}`
+    def tokenize(self) -> list[Token]:
+        while self.pos < len(self.text):
+            self.skip_whitespace()
+            char = self.peek()
+            if char == '\\0':
+                break
+            elif char == '#':
+                self.skip_comment()
+            elif char == '\\n':
+                self.tokens.append(Token(TokenType.NEWLINE, self.advance(), self.line, self.column))
+            elif char.isdigit():
+                self.tokens.append(Token(TokenType.NUMBER, self.read_number(), self.line, self.column))
+            elif char in '"\\'':
+                self.tokens.append(Token(TokenType.WORD, self.read_word_literal(), self.line, self.column))
+            elif char.isalpha() or char == '_':
+                ident = self.read_identifier()
+                token_type = self.keywords.get(ident, TokenType.IDENTIFIER)
+                self.tokens.append(Token(token_type, ident, self.line, self.column))`
   },
   {
     id: "parser",
@@ -68,35 +57,34 @@ impl Lexer {
     title: "Expression Parser",
     desc: "A clean recursive-descent parser. Handles math operator hierarchies and nested brackets correctly by climbing precedence levels.",
     icon: <Code className="size-6 text-[var(--rune-accent)]" />,
-    filename: "parser.rs",
-    lang: "rust",
-    code: `impl Parser {
-    fn parse_expression(&mut self, precedence: Precedence) -> Result<Expr, ParseError> {
-        let mut left = self.parse_prefix()?;
-        
-        while precedence < self.peek_precedence() {
-            let operator = self.advance()?;
-            left = self.parse_infix(left, operator)?;
-        }
-        
-        Ok(left)
-    }
+    filename: "parser/parser.py",
+    lang: "python",
+    code: `class Parser:
+    def parse(self) -> Program:
+        statements = []
+        self.skip_newlines()
+        while not self.match(TokenType.EOF):
+            stmt = self.parse_statement()
+            if stmt:
+                statements.append(stmt)
+            self.skip_newlines()
+        return Program(statements)
 
-    fn parse_prefix(&mut self) -> Result<Expr, ParseError> {
-        let token = self.peek();
-        match token.token_type {
-            TokenType::Identifier => Ok(Expr::Variable(token.lexeme)),
-            TokenType::Number => Ok(Expr::Literal(Value::Number(token.literal))),
-            TokenType::LeftParen => {
-                self.advance()?;
-                let expr = self.parse_expression(Precedence::Lowest)?;
-                self.consume(TokenType::RightParen, "Expect ')' after expression.")?;
-                Ok(expr)
-            }
-            _ => Err(ParseError::Unexpected(token)),
-        }
-    }
-}`
+    def parse_statement(self) -> Optional[Statement]:
+        if self.match(TokenType.WRITE):
+            return self.parse_write_statement()
+        elif self.match(TokenType.SET):
+            return self.parse_assignment_statement()
+        elif self.match(TokenType.IF):
+            return self.parse_if_statement()
+        elif self.match(TokenType.WHILE):
+            return self.parse_while_statement()
+        elif self.match(TokenType.SPELL):
+            return self.parse_spell_definition()
+        elif self.match(TokenType.CAST):
+            return self.parse_cast_statement()
+        elif self.match(TokenType.RETURN):
+            return self.parse_return_statement()`
   },
   {
     id: "ast",
@@ -104,42 +92,33 @@ impl Lexer {
     title: "Abstract Syntax Trees",
     desc: "Strongly-typed expressions and statement structures representation. Visualizes the program tree in a syntax layout prior to evaluations.",
     icon: <Cpu className="size-6 text-[var(--rune-accent)]" />,
-    filename: "ast.rs",
-    lang: "rust",
-    code: `#[derive(Debug, Clone)]
-pub enum Expr {
-    Literal(Value),
-    Variable(String),
-    Binary {
-        left: Box<Expr>,
-        operator: Token,
-        right: Box<Expr>,
-    },
-    Call {
-        callee: Box<Expr>,
-        paren: Token,
-        arguments: Vec<Expr>,
-    },
-    Grouping(Box<Expr>),
-}
+    filename: "ast/nodes.py",
+    lang: "python",
+    code: `class ASTNode(ABC):
+    pass
 
-#[derive(Debug, Clone)]
-pub enum Stmt {
-    Expression(Expr),
-    Let {
-        name: Token,
-        initializer: Expr,
-    },
-    Function {
-        name: Token,
-        params: Vec<Token>,
-        body: Vec<Stmt>,
-    },
-    Return {
-        keyword: Token,
-        value: Option<Expr>,
-    },
-}`
+class Expression(ASTNode):
+    pass
+
+class Statement(ASTNode):
+    pass
+
+class BinaryOp(Expression):
+    def __init__(self, left: Expression, operator: str, right: Expression):
+        self.left = left
+        self.operator = operator
+        self.right = right
+
+class AssignmentStatement(Statement):
+    def __init__(self, variable: str, value: Expression):
+        self.variable = variable
+        self.value = value
+
+class SpellDefinition(Statement):
+    def __init__(self, name: str, params: List[str], body: List[Statement]):
+        self.name = name
+        self.params = params
+        self.body = body`
   },
   {
     id: "runtime",
@@ -147,28 +126,29 @@ pub enum Stmt {
     title: "Runtime Evaluator",
     desc: "A dynamic tree-walk interpreter evaluation engine. Traces expression nodes sequentially while mutating scoping frame configurations.",
     icon: <Terminal className="size-6 text-[var(--rune-accent)]" />,
-    filename: "interpreter.rs",
-    lang: "rust",
-    code: `pub fn evaluate(&mut self, expr: &Expr, env: &mut Environment) -> Result<Value, RuntimeError> {
-    match expr {
-        Expr::Literal(val) => Ok(val.clone()),
-        Expr::Variable(name) => env.get(name),
-        Expr::Binary { left, operator, right } => {
-            let left_val = self.evaluate(left, env)?;
-            let right_val = self.evaluate(right, env)?;
-            self.evaluate_binary(left_val, operator, right_val)
-        }
-        Expr::Call { callee, paren, arguments } => {
-            let callee_val = self.evaluate(callee, env)?;
-            let mut args = Vec::new();
-            for arg in arguments {
-                args.push(self.evaluate(arg, env)?);
-            }
-            self.execute_call(callee_val, args, paren)
-        }
-        Expr::Grouping(inner) => self.evaluate(inner, env),
-    }
-}`
+    filename: "runtime/interpreter.py",
+    lang: "python",
+    code: `class Interpreter:
+    def interpret(self, node: ASTNode) -> Any:
+        method = getattr(self, f'visit_{type(node).__name__}', None)
+        if method:
+            return method(node)
+        self.error(f"No visit method for {type(node)}")
+
+    def visit_BinaryOp(self, node: BinaryOp) -> Any:
+        left = self.interpret(node.left)
+        right = self.interpret(node.right)
+
+        if node.operator == '+':
+            if isinstance(left, str) or isinstance(right, str):
+                return to_rune_string(left) + to_rune_string(right)
+            return left + right
+        if node.operator == '-':   return left - right
+        if node.operator == '*':   return left * right
+        if node.operator == '/':
+            if right == 0:
+                self.error("Division by zero")
+            return left / right`
   }
 ]
 
@@ -304,7 +284,7 @@ export function WorkshopSection() {
                   Close
                 </button>
                 <a
-                  href={`https://github.com/rune-lang/rune/blob/main/src/${selectedItem.filename}`}
+                  href={`https://github.com/lang-rune/rune/blob/main/rune/${selectedItem.filename}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-4 py-2 text-xs font-mono bg-[var(--rune-accent)] text-[#0A0A0B] font-semibold rounded hover:bg-[var(--rune-accent-dim)] transition-all flex items-center gap-1.5"

@@ -1,6 +1,6 @@
 import { source } from '@/lib/source';
 import { DocsPage, DocsBody, DocsDescription, DocsTitle } from 'fumadocs-ui/page';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 
 export async function generateStaticParams() {
@@ -10,16 +10,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug?: string[] }> }) {
   const { slug } = await params;
   const page = source.getPage(slug);
-  if (!page) return { title: "FlowCMS Docs" };
+  if (!page) return { title: "Rune Docs" };
 
   return {
-    title: `${page.data.title} — FlowCMS Docs`,
+    title: `${page.data.title} — Rune Docs`,
     description: page.data.description,
   };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug?: string[] }> }) {
   const { slug } = await params;
+  
+  if (!slug || slug.length === 0) {
+    redirect("/docs/getting-started/introduction");
+  }
+
   const page = source.getPage(slug);
   if (!page) notFound();
 

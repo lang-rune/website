@@ -41,13 +41,13 @@ export function FooterCTASection() {
           </Button>
 
           <Button asChild variant="outline" className="w-full sm:w-auto border-[var(--rune-border-strong)] text-[var(--rune-fg-base)] hover:border-[var(--rune-accent)] hover:text-[var(--rune-accent)]">
-            <a href="https://github.com/rune-lang/rune" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/lang-rune/rune" target="_blank" rel="noopener noreferrer">
               Explore the Source
             </a>
           </Button>
 
           <Button asChild variant="outline" className="w-full sm:w-auto border-[var(--rune-border-strong)] text-[var(--rune-fg-base)] hover:border-[var(--rune-accent)] hover:text-[var(--rune-accent)]">
-            <Link href="/docs/design-system">
+            <Link href="/docs/reference/design-system">
               Understand How It Works
             </Link>
           </Button>

@@ -16,19 +16,19 @@ const REPOS: RepoCard[] = [
     title: "rune-core",
     subtitle: "Core Language Interpreter",
     desc: "The central repository containing the hand-rolled tokenizer, recursive-descent parser, AST nodes, evaluator, and terminal shell (REPL).",
-    link: "https://github.com/rune-lang/rune"
+    link: "https://github.com/lang-rune/rune"
   },
   {
     title: "rune-website",
     subtitle: "Documentation & Guides",
     desc: "The codebase of this web portal, built with Next.js, Tailwind v4, and MDX. Integrates custom design tokens and interactive scopes.",
-    link: "https://github.com/rune-lang/website"
+    link: "https://github.com/lang-rune/website"
   },
   {
     title: "rune-vscode",
     subtitle: "VS Code Language Extension",
     desc: "The VS Code tooling extension providing syntax highlighting configurations, brace completions, and local editor workspace support.",
-    link: "https://github.com/rune-lang/vscode"
+    link: "https://github.com/lang-rune/vscode"
   }
 ]
 

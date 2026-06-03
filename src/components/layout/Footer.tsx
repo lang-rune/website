@@ -9,25 +9,25 @@ export function Footer() {
     {
       title: "Rune",
       links: [
-        { label: "Documentation", url: "/docs/design-system" },
+        { label: "Documentation", url: "/docs/getting-started/introduction" },
         { label: "Compiler Roadmap", url: "/roadmap" },
-        { label: "Language Guide", url: "/docs/design-system" },
+        { label: "Language Guide", url: "/docs/language-guide/variables" },
       ]
     },
     {
       title: "Website",
       links: [
-        { label: "Design System Spec", url: "/docs/design-system" },
+        { label: "Design System Spec", url: "/docs/reference/design-system" },
         { label: "Changelog logs", url: "/roadmap" },
-        { label: "Issue Feedback", url: "https://github.com/rune-lang/rune/issues" },
+        { label: "Issue Feedback", url: "https://github.com/lang-rune/rune/issues" },
       ]
     },
     {
       title: "VS Code",
       links: [
-        { label: "Tooling Extension", url: "https://github.com/rune-lang/vscode" },
-        { label: "Source files", url: "https://github.com/rune-lang/vscode" },
-        { label: "Installation Guide", url: "https://github.com/rune-lang/vscode" },
+        { label: "Tooling Extension", url: "https://github.com/lang-rune/vscode" },
+        { label: "Source files", url: "https://github.com/lang-rune/vscode" },
+        { label: "Installation Guide", url: "https://github.com/lang-rune/vscode" },
       ]
     }
   ]

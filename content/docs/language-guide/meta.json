@@ -1,0 +1,9 @@
+{
+  "title": "Language Guide",
+  "pages": [
+    "variables",
+    "data-types",
+    "control-flow",
+    "loops"
+  ]
+}

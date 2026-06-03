@@ -21,10 +21,10 @@ const SNIPPETS: Snippet[] = [
     id: "greet",
     title: "Functions (greet)",
     code: `spell greet(name) {
-  write("Hello ", name);
+  write("Hello ", name)
 }
 
-greet("explorer");`,
+greet("explorer")`,
     tokens: [
       { value: "spell", type: "keyword" },
       { value: "greet", type: "ident" },
@@ -38,23 +38,21 @@ greet("explorer");`,
       { value: ",", type: "symbol" },
       { value: "name", type: "ident" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
       { value: "}", type: "symbol" },
       { value: "greet", type: "ident" },
       { value: "(", type: "symbol" },
       { value: '"explorer"', type: "string" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
     ],
     ast: [
       { id: "root", label: "Program", parentId: null },
-      { id: "decl", label: "spell greet(name)", parentId: "root" },
+      { id: "decl", label: "SpellDefinition: greet(name)", parentId: "root" },
       { id: "params", label: "Param: name", parentId: "decl" },
       { id: "body", label: "BlockStmt", parentId: "decl" },
-      { id: "call", label: "Call: write()", parentId: "body" },
+      { id: "call", label: "WriteStatement: write()", parentId: "body" },
       { id: "arg1", label: 'Arg: "Hello "', parentId: "call" },
       { id: "arg2", label: "Arg: name", parentId: "call" },
-      { id: "exec", label: 'Call: greet("explorer")', parentId: "root" },
+      { id: "exec", label: 'FunctionCall: greet("explorer")', parentId: "root" },
     ],
     output: "Hello explorer",
     explanation: "Declares a function `greet` using the `spell` keyword, then invokes it passing 'explorer' to bind to the `name` parameter in a local environment."
@@ -63,13 +61,13 @@ greet("explorer");`,
     id: "factorial",
     title: "Control Flow (factorial)",
     code: `spell factorial(n) {
-  if (n <= 1) {
-    return 1;
+  if n <= 1 {
+    return 1
   }
-  return n * factorial(n - 1);
+  return n * factorial(n - 1)
 }
 
-factorial(5);`,
+factorial(5)`,
     tokens: [
       { value: "spell", type: "keyword" },
       { value: "factorial", type: "ident" },
@@ -78,15 +76,12 @@ factorial(5);`,
       { value: ")", type: "symbol" },
       { value: "{", type: "symbol" },
       { value: "if", type: "keyword" },
-      { value: "(", type: "symbol" },
       { value: "n", type: "ident" },
       { value: "<=", type: "operator" },
       { value: "1", type: "number" },
-      { value: ")", type: "symbol" },
       { value: "{", type: "symbol" },
       { value: "return", type: "keyword" },
       { value: "1", type: "number" },
-      { value: ";", type: "symbol" },
       { value: "}", type: "symbol" },
       { value: "return", type: "keyword" },
       { value: "n", type: "ident" },
@@ -97,93 +92,86 @@ factorial(5);`,
       { value: "-", type: "operator" },
       { value: "1", type: "number" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
       { value: "}", type: "symbol" },
       { value: "factorial", type: "ident" },
       { value: "(", type: "symbol" },
       { value: "5", type: "number" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
     ],
     ast: [
       { id: "root", label: "Program", parentId: null },
-      { id: "decl", label: "spell factorial(n)", parentId: "root" },
-      { id: "ifstmt", label: "IfStmt", parentId: "decl" },
+      { id: "decl", label: "SpellDefinition: factorial(n)", parentId: "root" },
+      { id: "ifstmt", label: "IfStatement", parentId: "decl" },
       { id: "cond", label: "n <= 1", parentId: "ifstmt" },
-      { id: "then", label: "Return 1", parentId: "ifstmt" },
-      { id: "ret", label: "Return n * factorial(n - 1)", parentId: "decl" },
-      { id: "exec", label: "Call: factorial(5)", parentId: "root" },
+      { id: "then", label: "ReturnStatement: 1", parentId: "ifstmt" },
+      { id: "ret", label: "ReturnStatement: n * factorial(n - 1)", parentId: "decl" },
+      { id: "exec", label: "FunctionCall: factorial(5)", parentId: "root" },
     ],
     output: "120",
     explanation: "Demonstrates recursion and logical expression precedence: the parser structure checks the branch `n <= 1` before evaluating the expression product."
   },
   {
     id: "makeCounter",
-    title: "State Closures (makeCounter)",
-    code: `spell makeCounter() {
-  let count = 0;
-  spell countUp() {
-    count = count + 1;
-    return count;
+    title: "State Closures (make_counter)",
+    code: `spell make_counter() {
+  set count = 0
+  spell count_up() {
+    set count = count + 1
+    return count
   }
-  return countUp;
+  return count_up
 }
 
-let counter = makeCounter();
-counter();`,
+set counter = make_counter()
+counter()`,
     tokens: [
       { value: "spell", type: "keyword" },
-      { value: "makeCounter", type: "ident" },
+      { value: "make_counter", type: "ident" },
       { value: "(", type: "symbol" },
       { value: ")", type: "symbol" },
       { value: "{", type: "symbol" },
-      { value: "let", type: "keyword" },
+      { value: "set", type: "keyword" },
       { value: "count", type: "ident" },
       { value: "=", type: "operator" },
       { value: "0", type: "number" },
-      { value: ";", type: "symbol" },
       { value: "spell", type: "keyword" },
-      { value: "countUp", type: "ident" },
+      { value: "count_up", type: "ident" },
       { value: "(", type: "symbol" },
       { value: ")", type: "symbol" },
       { value: "{", type: "symbol" },
+      { value: "set", type: "keyword" },
       { value: "count", type: "ident" },
       { value: "=", type: "operator" },
       { value: "count", type: "ident" },
       { value: "+", type: "operator" },
       { value: "1", type: "number" },
-      { value: ";", type: "symbol" },
       { value: "return", type: "keyword" },
       { value: "count", type: "ident" },
-      { value: ";", type: "symbol" },
       { value: "}", type: "symbol" },
       { value: "return", type: "keyword" },
-      { value: "countUp", type: "ident" },
-      { value: ";", type: "symbol" },
+      { value: "count_up", type: "ident" },
       { value: "}", type: "symbol" },
-      { value: "let", type: "keyword" },
+      { value: "set", type: "keyword" },
       { value: "counter", type: "ident" },
       { value: "=", type: "operator" },
-      { value: "makeCounter", type: "ident" },
+      { value: "make_counter", type: "ident" },
       { value: "(", type: "symbol" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
       { value: "counter", type: "ident" },
       { value: "(", type: "symbol" },
       { value: ")", type: "symbol" },
-      { value: ";", type: "symbol" },
     ],
     ast: [
       { id: "root", label: "Program", parentId: null },
-      { id: "decl", label: "spell makeCounter()", parentId: "root" },
-      { id: "letstmt", label: "Let: count = 0", parentId: "decl" },
-      { id: "inner", label: "spell countUp()", parentId: "decl" },
-      { id: "assign", label: "count = count + 1", parentId: "inner" },
-      { id: "ret", label: "Return countUp", parentId: "decl" },
-      { id: "inst", label: "Let: counter = makeCounter()", parentId: "root" },
+      { id: "decl", label: "SpellDefinition: make_counter()", parentId: "root" },
+      { id: "setstmt", label: "AssignmentStatement: count = 0", parentId: "decl" },
+      { id: "inner", label: "SpellDefinition: count_up()", parentId: "decl" },
+      { id: "assign", label: "AssignmentStatement: count = count + 1", parentId: "inner" },
+      { id: "ret", label: "ReturnStatement: count_up", parentId: "decl" },
+      { id: "inst", label: "AssignmentStatement: counter = make_counter()", parentId: "root" },
     ],
     output: "1",
-    explanation: "Creates a closure environment. The returned `countUp` function captures a pointer to the parent context environment containing `count`."
+    explanation: "Creates a closure environment. The returned `count_up` function captures a pointer to the parent context environment containing `count`."
   }
 ]
 
@@ -205,17 +193,14 @@ export function CompilerJourneySection() {
   React.useEffect(() => {
     const handleScroll = () => {
       const viewportCenter = window.innerHeight / 2
-      let closestStage = "source"
-      let minDistance = Infinity
+      let closestStage = activeStage
 
       STAGES.forEach((stage) => {
         const el = document.getElementById(`stage-${stage.id}`)
         if (el) {
           const rect = el.getBoundingClientRect()
-          const cardCenter = rect.top + rect.height / 2
-          const distance = Math.abs(cardCenter - viewportCenter)
-          if (distance < minDistance) {
-            minDistance = distance
+          // Update active stage ONLY when the card spans across the vertical middle of the viewport
+          if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
             closestStage = stage.id
           }
         }
@@ -227,7 +212,7 @@ export function CompilerJourneySection() {
     window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll() // Initialize correctly on mount
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [activeStage])
 
   const handleStageSelect = (stageId: string) => {
     setActiveStage(stageId)
@@ -477,7 +462,7 @@ export function CompilerJourneySection() {
                   <span className="text-[var(--rune-fg-base)]">
                     {activeSnippet.id === "greet" && "greet = [Closure: greet]"}
                     {activeSnippet.id === "factorial" && "factorial = [Closure: factorial]"}
-                    {activeSnippet.id === "makeCounter" && "makeCounter = [Closure: makeCounter], counter = [Closure: countUp]"}
+                    {activeSnippet.id === "makeCounter" && "make_counter = [Closure: make_counter], counter = [Closure: count_up]"}
                   </span>
                 </div>
               </div>

@@ -34,7 +34,7 @@ export function Header() {
 
   // Navigation Links
   const navLinks = [
-    { label: "Docs", url: "/docs/design-system", matches: "/docs" },
+    { label: "Docs", url: "/docs/getting-started/introduction", matches: "/docs" },
     { label: "Roadmap", url: "/roadmap", matches: "/roadmap" },
   ]
 
@@ -112,7 +112,7 @@ export function Header() {
 
           {/* GitHub Desktop Link */}
           <a
-            href="https://github.com/rune-lang/rune"
+            href="https://github.com/lang-rune/rune"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex w-8 h-8 rounded border border-[var(--rune-border)] bg-[var(--rune-bg-raised)] text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] hover:border-[var(--rune-accent)] transition-all duration-200 items-center justify-center outline-none"
@@ -123,7 +123,7 @@ export function Header() {
 
           {/* VS Code Desktop Link */}
           <a
-            href="https://github.com/rune-lang/vscode"
+            href="https://github.com/lang-rune/vscode"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:flex w-8 h-8 rounded border border-[var(--rune-border)] bg-[var(--rune-bg-raised)] text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] hover:border-[var(--rune-accent)] transition-all duration-200 items-center justify-center outline-none"
@@ -199,7 +199,7 @@ export function Header() {
 
                   {/* GitHub link inside drawer */}
                   <a
-                    href="https://github.com/rune-lang/rune"
+                    href="https://github.com/lang-rune/rune"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-2 rounded text-sm font-mono text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] flex items-center gap-2"
@@ -209,7 +209,7 @@ export function Header() {
 
                   {/* VS Code link inside drawer */}
                   <a
-                    href="https://github.com/rune-lang/vscode"
+                    href="https://github.com/lang-rune/vscode"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-3 py-2 rounded text-sm font-mono text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] flex items-center gap-2"

@@ -12,7 +12,7 @@ export function AnnouncementBar() {
       className="w-full bg-[var(--rune-bg-overlay)] border-b border-[var(--rune-border)] py-1.5 px-4 text-center z-40 relative flex items-center justify-center"
     >
       <a 
-        href="https://github.com/rune-lang/vscode" 
+        href="https://github.com/lang-rune/vscode" 
         target="_blank" 
         rel="noopener noreferrer"
         className="group inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-xs text-[var(--rune-fg-muted)] hover:text-[var(--rune-accent)] transition-all duration-200"

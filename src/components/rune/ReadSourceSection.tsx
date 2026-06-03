@@ -9,10 +9,10 @@ interface SourceLink {
 }
 
 const LINKS: SourceLink[] = [
-  { label: "→ Read the Lexer Scanner", url: "https://github.com/rune-lang/rune/blob/main/src/lexer.rs" },
-  { label: "→ Read the Expression Parser", url: "https://github.com/rune-lang/rune/blob/main/src/parser.rs" },
-  { label: "→ Read the AST Tree Models", url: "https://github.com/rune-lang/rune/blob/main/src/ast.rs" },
-  { label: "→ Read the Evaluation Loop", url: "https://github.com/rune-lang/rune/blob/main/src/interpreter.rs" }
+  { label: "→ Read the Lexer Scanner", url: "https://github.com/lang-rune/rune/blob/main/rune/lexer/lexer.py" },
+  { label: "→ Read the Expression Parser", url: "https://github.com/lang-rune/rune/blob/main/rune/parser/parser.py" },
+  { label: "→ Read the AST Tree Models", url: "https://github.com/lang-rune/rune/blob/main/rune/ast/nodes.py" },
+  { label: "→ Read the Evaluation Loop", url: "https://github.com/lang-rune/rune/blob/main/rune/runtime/interpreter.py" }
 ]
 
 export function ReadSourceSection() {

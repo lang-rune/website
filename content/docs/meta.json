@@ -1,0 +1,10 @@
+{
+  "title": "Documentation",
+  "pages": [
+    "getting-started",
+    "language-guide",
+    "spells-and-functions",
+    "reference",
+    "project-meta"
+  ]
+}

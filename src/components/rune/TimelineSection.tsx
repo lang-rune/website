@@ -12,34 +12,24 @@ interface Milestone {
 
 const MILESTONES: Milestone[] = [
   {
-    date: "Late 2024",
-    title: "First Token Emitted",
-    description: "The scanning loop successfully maps raw source code characters to structured, categorized Token data frames."
+    date: "Jan 2025",
+    title: "v0.1.0 Initial Release",
+    description: "A complete tree-walk interpreter in Python: lexer, recursive-descent parser, environment chains, closures, standard built-ins, and an interactive REPL."
   },
   {
-    date: "Late 2024",
-    title: "Recursive Descent Parser",
-    description: "Expression tree structures are completed. Parser resolves complex nested braces and operators accurately."
+    date: "Jun 2025",
+    title: "v0.2.0 Package Refactor",
+    description: "Split packages into lexer, parser, ast, and runtime modules; isolated control-flow signals and centralizing keywords configuration."
   },
   {
-    date: "Late 2024",
-    title: "AST Execution Evaluator",
-    description: "The initial tree-walk evaluator completes expression testing, mapping nodes directly to output streams."
+    date: "Jun 2026",
+    title: "VS Code Extension v1.2.1",
+    description: "Syntax highlighting, snippets, and editor workspace execution integration with robust terminal path auto-discovery."
   },
   {
-    date: "Early 2025",
-    title: "Dynamic Scope Closures",
-    description: "Scope resolver binds lexical variable allocations correctly, enabling inner spells to link to parent frames."
-  },
-  {
-    date: "Early 2025",
-    title: "VS Code Extension",
-    description: "Syntax highlighting, scoping configurations, and initial editor tools are deployed to market."
-  },
-  {
-    date: "2026",
+    date: "Jun 2026",
     title: "Website & Docs Launch",
-    description: "Establishing the design system documentation and launching this editorial workspace registry."
+    description: "Establishing the design system documentation and launching this editorial workspace registry with real-time pipeline visualizers."
   }
 ]
 

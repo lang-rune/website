@@ -17,60 +17,63 @@ interface ExecutionStep {
 const STEPS: ExecutionStep[] = [
   {
     label: "1. Declaration",
-    codeLines: [1, 2, 3, 4, 5, 6, 7, 8],
-    globalEnv: [{ name: "makeCounter", val: "spell()" }],
+    codeLines: [1, 2, 3, 4, 5, 6],
+    globalEnv: [{ name: "make_adder", val: "spell()" }],
     closureEnv: null,
     activeReturn: null,
-    explanation: "The compiler registers the global function template `makeCounter` in the Global Scope environment table. No variables are executed yet."
+    explanation: "The interpreter registers the global spell template `make_adder` in the Global Scope environment table. No variables are bound yet."
   },
   {
     label: "2. Allocation",
-    codeLines: [10],
+    codeLines: [8],
     globalEnv: [
-      { name: "makeCounter", val: "spell()" },
-      { name: "counter", val: "spell(countUp)" }
+      { name: "make_adder", val: "spell()" },
+      { name: "add5", val: "spell(add)" }
     ],
-    closureEnv: [{ name: "count", val: "0" }],
-    activeReturn: "countUp Function pointer",
-    explanation: "Executing `makeCounter()` spawns a unique local environment scope frame. Inside it, `count` is initialized to `0`. A reference to `countUp` is returned, keeping this environment alive."
+    closureEnv: [{ name: "n", val: "5" }],
+    activeReturn: "add SpellValue (closure)",
+    explanation: "Executing `make_adder(5)` spawns a unique local environment frame where `n` is set to `5`. A SpellValue for the inner `add` spell is returned, capturing this parent frame as its closure environment."
   },
   {
-    label: "3. First Call",
-    codeLines: [11],
+    label: "3. Invocation",
+    codeLines: [9],
     globalEnv: [
-      { name: "makeCounter", val: "spell()" },
-      { name: "counter", val: "spell(countUp)" }
+      { name: "make_adder", val: "spell()" },
+      { name: "add5", val: "spell(add)" }
     ],
-    closureEnv: [{ name: "count", val: "1" }],
-    activeReturn: "1",
-    explanation: "Calling `counter()` executes the inner `countUp` spell. It climbs the environment chain to find `count` in the parent frame, increments it from `0` to `1`, and returns `1`."
+    closureEnv: [
+      { name: "n", val: "5" },
+      { name: "x", val: "3" }
+    ],
+    activeReturn: null,
+    explanation: "Calling `add5(3)` creates a new call environment where parameter `x` is defined as `3`. This environment chain links back to the captured parent closure environment where `n` equals `5`."
   },
   {
-    label: "4. Mutation",
-    codeLines: [12],
+    label: "4. Resolution",
+    codeLines: [3, 9],
     globalEnv: [
-      { name: "makeCounter", val: "spell()" },
-      { name: "counter", val: "spell(countUp)" }
+      { name: "make_adder", val: "spell()" },
+      { name: "add5", val: "spell(add)" }
     ],
-    closureEnv: [{ name: "count", val: "2" }],
-    activeReturn: "2",
-    explanation: "Calling `counter()` a second time accesses the exact same closure environment frame. It increments the existing value of `count` from `1` to `2`, returning `2`."
+    closureEnv: [
+      { name: "n", val: "5" },
+      { name: "x", val: "3" }
+    ],
+    activeReturn: "8",
+    explanation: "The interpreter evaluates `x + n`. It looks up `x` in the local call scope (`3`), then walks up the parent closure chain to retrieve `n` (`5`), producing `8` to be printed."
   }
 ]
 
 const CODE_LINES = [
-  "spell makeCounter() {",
-  "  let count = 0;",
-  "  spell countUp() {",
-  "    count = count + 1;",
-  "    return count;",
+  "spell make_adder(n) {",
+  "  spell add(x) {",
+  "    return x + n",
   "  }",
-  "  return countUp;",
+  "  return add",
   "}",
   "",
-  "let counter = makeCounter();",
-  "counter(); // 1",
-  "counter(); // 2"
+  "set add5 = make_adder(5)",
+  "write(add5(3))"
 ]
 
 export function ClosureExplorerSection() {
@@ -217,7 +220,7 @@ export function ClosureExplorerSection() {
                   <div className="absolute -top-6 left-1/4 w-px h-6 bg-dashed bg-[var(--rune-accent-dim)]" />
                   
                   <div className="text-xs font-mono font-semibold text-[var(--rune-accent)] flex justify-between">
-                    <span>makeCounter Closure Environment</span>
+                    <span>make_adder Closure Environment</span>
                     <span className="text-[10px] text-[var(--rune-accent-dim)]">Parent: Global</span>
                   </div>
                   <div className="space-y-1.5 border-t border-amber-900/30 pt-2 mt-1">

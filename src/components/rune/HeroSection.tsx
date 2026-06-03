@@ -9,7 +9,7 @@ import { ArrowRightIcon } from "lucide-react"
 export function HeroSection() {
   const [phase, setPhase] = React.useState<"glyph" | "code" | "tokens" | "reveal">("glyph")
   const [typedCode, setTypedCode] = React.useState("")
-  const fullCode = 'spell greet("explorer");'
+  const fullCode = 'write("hello explorer")'
 
   React.useEffect(() => {
     if (phase === "glyph") {
@@ -99,16 +99,13 @@ export function HeroSection() {
                 className="flex flex-wrap gap-2 items-center"
               >
                 <span className="px-1.5 py-0.5 rounded border border-[var(--rune-accent-dim)] bg-[var(--rune-accent-subtle)] text-[var(--rune-accent)] font-semibold scale-95 transition-all">
-                  KEYWORD(spell)
-                </span>
-                <span className="px-1.5 py-0.5 rounded border border-[var(--rune-border-strong)] bg-[var(--rune-bg-subtle)] text-[var(--rune-fg-base)] scale-95">
-                  IDENT(greet)
+                  KEYWORD(write)
                 </span>
                 <span className="text-[var(--rune-fg-muted)]">(</span>
                 <span className="px-1.5 py-0.5 rounded border border-green-900/50 bg-green-950/20 text-[var(--rune-success)] scale-95">
-                  STR(&quot;explorer&quot;)
+                  WORD(&quot;hello explorer&quot;)
                 </span>
-                <span className="text-[var(--rune-fg-muted)]">);</span>
+                <span className="text-[var(--rune-fg-muted)]">)</span>
               </motion.div>
             )}
 
@@ -118,9 +115,9 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 className="text-[var(--rune-fg-muted)] leading-relaxed"
               >
-                <div className="text-[var(--rune-fg-base)]">{'spell greet("explorer");'}</div>
+                <div className="text-[var(--rune-fg-base)]">{'write("hello explorer")'}</div>
                 <div className="text-green-500/80 mt-1">✓ Lexed & parsed in 0.1ms</div>
-                <div className="text-[var(--rune-accent)] font-semibold mt-1">» &quot;Hello explorer&quot;</div>
+                <div className="text-[var(--rune-accent)] font-semibold mt-1">» hello explorer</div>
               </motion.div>
             )}
 

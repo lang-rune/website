@@ -19,31 +19,31 @@ interface Milestone {
 const MILESTONES: Milestone[] = [
   {
     phase: "Phase 1: Basic Interpreter",
-    title: "Tree-Walk Evaluator & Closures",
+    title: "v0.1.0 and v0.2.0 Core Releases",
     status: "completed",
     icon: <Layers className="size-4" />,
-    description: "Hand-rolled scanner, recursive-descent expression parser, scope resolver checking binding depth, and evaluation stack executing syntax trees directly."
+    description: "Hand-rolled tokenizer, recursive-descent expression parser, parent-linked lexical environments, tree-walk evaluation, relative imports, and isolated runtime signals."
   },
   {
-    phase: "Phase 2: Compiler Optimizer",
-    title: "Abstract Tree Folding Pass",
+    phase: "Phase 2: Core Syntax Enhancements",
+    title: "Lists & Loops Addition",
     status: "in-progress",
     icon: <Zap className="size-4" />,
-    description: "Integrating static analysis passes to optimize AST structures: folding math operations, dead path checking, and tracking scoping variables before evaluation."
+    description: "Adding lists as ordered collections, list iteration loops (`for item in items`), multiline string support, string escapes, and compound assignments (`set x += 1`)."
   },
   {
-    phase: "Phase 3: Bytecode VM",
-    title: "Virtual Machine Execution",
+    phase: "Phase 3: Module System & Stdlib",
+    title: "Modules Imports & Error Handling",
     status: "planned",
     icon: <Rocket className="size-4" />,
-    description: "Migrating from raw tree-walking evaluation to a stack-based VM. Compiling the AST to bytecode instructions for faster loops."
+    description: "Creating a module loading mechanism, structured error handling (`try/catch` equivalents), and built-in standard library modules for math, file systems, and inputs."
   },
   {
-    phase: "Phase 4: Ecosystem & Tooling",
-    title: "Language Server Protocol (LSP)",
+    phase: "Phase 4: Bytecode VM & Editor Tooling",
+    title: "VM Execution & LSP Integration",
     status: "planned",
     icon: <Heart className="size-4" />,
-    description: "Extending the VS Code plugin to support autocompletions, diagnostics, and hover definition highlights using a custom LSP server written in Rust."
+    description: "Compiling ASTs to compact bytecode instructions, executing them on a fast stack-based virtual machine (VM), and building a Language Server Protocol (LSP) server."
   }
 ]
 
