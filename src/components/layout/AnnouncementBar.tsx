@@ -18,9 +18,9 @@ export function AnnouncementBar() {
         className="group inline-flex items-center gap-1.5 font-mono text-[10px] sm:text-xs text-[var(--rune-fg-muted)] hover:text-[var(--rune-accent)] transition-all duration-200"
       >
         <span className="bg-[var(--rune-accent-subtle)] text-[var(--rune-accent)] border border-[var(--rune-accent-dim)] px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider select-none">
-          Ecosystem
+          NEW
         </span>
-        <span>Rune VS Code Extension is now available on GitHub</span>
+        <span>Documentation Website Launch</span>
         <span className="inline-block transform group-hover:translate-x-0.5 transition-transform duration-200">
           →
         </span>
