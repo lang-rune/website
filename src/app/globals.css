@@ -4,118 +4,233 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
+/* ==========================================================================
+   RUNE DESIGN TOKENS
+   Source of truth: DESIGN.md
+   ========================================================================== */
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* --- Spacing Scale (4px base grid) --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* --- Radius --- */
+  --rune-radius-sm: 4px;
+  --rune-radius-md: 8px;
+  --rune-radius-lg: 12px;
+
+  /* --- Layout --- */
+  --rune-max-content: 720px;
+  --rune-max-wide:    1100px;
+  --rune-max-full:    1400px;
+
+  /* --- Color Tokens (Dark Mode = Default) --- */
+
+  /* Backgrounds */
+  --rune-bg-base:    #0A0A0B;
+  --rune-bg-raised:  #111114;
+  --rune-bg-overlay: #18181C;
+  --rune-bg-subtle:  #1E1E24;
+
+  /* Borders */
+  --rune-border:        rgba(255, 255, 255, 0.07);
+  --rune-border-strong: rgba(255, 255, 255, 0.13);
+
+  /* Foreground / Text */
+  --rune-fg-base:  #E8E8EE;
+  --rune-fg-muted: #7A7A8C;
+  --rune-fg-faint: #3D3D4F;
+
+  /* Accent — Amber/Gold */
+  --rune-accent:        #D4A24C;
+  --rune-accent-dim:    #9A6F2A;
+  --rune-accent-glow:   rgba(212, 162, 76, 0.15);
+  --rune-accent-subtle: rgba(212, 162, 76, 0.07);
+
+  /* Syntax Highlighting */
+  --rune-syn-keyword:  #C792EA;
+  --rune-syn-string:   #C3E88D;
+  --rune-syn-number:   #F78C6C;
+  --rune-syn-comment:  #546E7A;
+  --rune-syn-fn:       #82AAFF;
+  --rune-syn-operator: #89DDFF;
+  --rune-syn-variable: #EEFFFF;
+
+  /* Functional */
+  --rune-success: #4ADE80;
+  --rune-warning: #FBBF24;
+  --rune-error:   #F87171;
+
+  /* Navigation */
+  --rune-nav-bg: rgba(10, 10, 11, 0.85);
+
+  /* --- shadcn Semantic → Rune Mapping --- */
+  --background:           var(--rune-bg-base);
+  --foreground:           var(--rune-fg-base);
+  --card:                 var(--rune-bg-raised);
+  --card-foreground:      var(--rune-fg-base);
+  --popover:              var(--rune-bg-overlay);
+  --popover-foreground:   var(--rune-fg-base);
+  --primary:              var(--rune-accent);
+  --primary-foreground:   #0A0A0B;
+  --secondary:            var(--rune-bg-subtle);
+  --secondary-foreground: var(--rune-fg-base);
+  --muted:                var(--rune-bg-subtle);
+  --muted-foreground:     var(--rune-fg-muted);
+  --accent:               var(--rune-bg-subtle);
+  --accent-foreground:    var(--rune-fg-base);
+  --destructive:          var(--rune-error);
+  --border:               var(--rune-border);
+  --input:                var(--rune-border-strong);
+  --ring:                 var(--rune-accent);
+  --radius:               var(--rune-radius-md);
+
+  /* Sidebar */
+  --sidebar:                    var(--rune-bg-raised);
+  --sidebar-foreground:         var(--rune-fg-base);
+  --sidebar-primary:            var(--rune-accent);
+  --sidebar-primary-foreground: #0A0A0B;
+  --sidebar-accent:             var(--rune-bg-subtle);
+  --sidebar-accent-foreground:  var(--rune-fg-base);
+  --sidebar-border:             var(--rune-border);
+  --sidebar-ring:               var(--rune-accent);
+
+  /* Charts */
+  --chart-1: var(--rune-accent);
+  --chart-2: var(--rune-fg-muted);
+  --chart-3: var(--rune-fg-faint);
+  --chart-4: var(--rune-accent-dim);
+  --chart-5: var(--rune-bg-subtle);
 }
 
+/* Dark mode — mirrors :root defaults, active when next-themes sets .dark */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --rune-bg-base:    #0A0A0B;
+  --rune-bg-raised:  #111114;
+  --rune-bg-overlay: #18181C;
+  --rune-bg-subtle:  #1E1E24;
+
+  --rune-border:        rgba(255, 255, 255, 0.07);
+  --rune-border-strong: rgba(255, 255, 255, 0.13);
+
+  --rune-fg-base:  #E8E8EE;
+  --rune-fg-muted: #7A7A8C;
+  --rune-fg-faint: #3D3D4F;
+
+  --rune-accent:        #D4A24C;
+  --rune-accent-dim:    #9A6F2A;
+  --rune-accent-glow:   rgba(212, 162, 76, 0.15);
+  --rune-accent-subtle: rgba(212, 162, 76, 0.07);
+
+  --rune-nav-bg: rgba(10, 10, 11, 0.85);
+  --primary-foreground: #0A0A0B;
 }
+
+/* Light mode — aged paper with ink */
+.light {
+  --rune-bg-base:    #F5F2EC;
+  --rune-bg-raised:  #EDEAE2;
+  --rune-bg-overlay: #E5E1D7;
+  --rune-bg-subtle:  #DBD7CC;
+
+  --rune-border:        rgba(0, 0, 0, 0.08);
+  --rune-border-strong: rgba(0, 0, 0, 0.15);
+
+  --rune-fg-base:  #1A1A1F;
+  --rune-fg-muted: #6B6860;
+  --rune-fg-faint: #A8A49C;
+
+  --rune-accent:        #8B5E1A;
+  --rune-accent-dim:    #6B4712;
+  --rune-accent-glow:   rgba(139, 94, 26, 0.12);
+  --rune-accent-subtle: rgba(139, 94, 26, 0.06);
+
+  --rune-nav-bg: rgba(245, 242, 236, 0.85);
+  --primary-foreground: #F5F2EC;
+}
+
+/* ==========================================================================
+   TAILWIND THEME
+   ========================================================================== */
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-fraunces);
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-dm-sans);
+
+  /* Rune color utilities */
+  --color-rune-accent: var(--rune-accent);
+  --color-rune-accent-dim: var(--rune-accent-dim);
+  --color-rune-accent-glow: var(--rune-accent-glow);
+  --color-rune-accent-subtle: var(--rune-accent-subtle);
+  --color-rune-muted: var(--rune-fg-muted);
+  --color-rune-faint: var(--rune-fg-faint);
+  --color-rune-raised: var(--rune-bg-raised);
+  --color-rune-overlay: var(--rune-bg-overlay);
+  --color-rune-subtle: var(--rune-bg-subtle);
+  --color-rune-border: var(--rune-border);
+  --color-rune-border-strong: var(--rune-border-strong);
+
+  /* shadcn semantic colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Radius */
+  --radius-sm: var(--rune-radius-sm);
+  --radius-md: var(--rune-radius-md);
+  --radius-lg: var(--rune-radius-lg);
+  --radius-xl: calc(var(--rune-radius-lg) + 4px);
+  --radius-2xl: calc(var(--rune-radius-lg) + 8px);
+  --radius-3xl: calc(var(--rune-radius-lg) + 12px);
+  --radius-4xl: calc(var(--rune-radius-lg) + 16px);
+}
+
+/* ==========================================================================
+   BASE LAYER
+   ========================================================================== */
 
 @layer base {
   * {
@@ -123,8 +238,315 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02";
   }
   html {
     @apply font-sans;
   }
+
+  /* Typography defaults — DESIGN.md §2 */
+  h1, h2 {
+    font-family: var(--font-fraunces), Georgia, serif;
+    text-wrap: balance;
+  }
+  h1 {
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  h3, h4 {
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  h3 { line-height: 1.3; }
+  h4 { line-height: 1.4; }
+
+  code, pre {
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
 }
+
+/* ==========================================================================
+   COMPONENT LAYER
+   ========================================================================== */
+
+@layer components {
+
+  /* --- Inline Code --- */
+  code:not(pre code) {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.8125em;
+    background: var(--rune-bg-subtle);
+    border: 1px solid var(--rune-border);
+    border-radius: var(--rune-radius-sm);
+    padding: 1px 6px;
+    color: var(--rune-accent);
+  }
+
+  /* --- Code Block --- */
+  .rune-codeblock {
+    background: var(--rune-bg-raised);
+    border: 1px solid var(--rune-border);
+    border-radius: var(--rune-radius-lg);
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    overflow: hidden;
+    position: relative;
+  }
+  .rune-codeblock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rune-accent-dim), transparent);
+    z-index: 1;
+  }
+  .rune-codeblock > pre {
+    padding: var(--space-6);
+    margin: 0;
+    overflow-x: auto;
+  }
+  .rune-codeblock:has(.rune-codeblock-header) > pre {
+    padding-top: var(--space-4);
+  }
+
+  .rune-codeblock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-6);
+    border-bottom: 1px solid var(--rune-border);
+    background: var(--rune-bg-overlay);
+    font-size: 0.75rem;
+    color: var(--rune-fg-muted);
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+
+  /* --- Card (CSS class) --- */
+  .rune-card {
+    background: var(--rune-bg-raised);
+    border: 1px solid var(--rune-border);
+    border-radius: var(--rune-radius-lg);
+    padding: var(--space-6);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .rune-card:hover {
+    border-color: var(--rune-border-strong);
+    background: var(--rune-bg-overlay);
+  }
+
+  /* --- Badge (CSS class) --- */
+  .rune-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    background: var(--rune-bg-subtle);
+    border: 1px solid var(--rune-border);
+    color: var(--rune-fg-muted);
+  }
+  .rune-badge.accent {
+    background: var(--rune-accent-subtle);
+    border-color: var(--rune-accent-dim);
+    color: var(--rune-accent);
+  }
+
+  /* --- Divider --- */
+  .rune-divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--rune-border-strong) 20%,
+      var(--rune-border-strong) 80%,
+      transparent 100%
+    );
+    margin: var(--space-16) 0;
+  }
+
+  /* --- Navigation --- */
+  .rune-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px) saturate(180%);
+    background: var(--rune-nav-bg);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .rune-nav.scrolled {
+    border-bottom-color: var(--rune-border);
+  }
+
+  /* --- Prose (docs content) --- */
+  .rune-prose {
+    max-width: var(--rune-max-content);
+    font-family: var(--font-dm-sans), sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--rune-fg-base);
+  }
+  .rune-prose h1 {
+    font: 700 2.25rem/1.2 var(--font-fraunces), serif;
+    margin-bottom: var(--space-4);
+  }
+  .rune-prose h2 {
+    font: 600 1.5rem/1.3 var(--font-fraunces), serif;
+    margin: var(--space-12) 0 var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--rune-border);
+  }
+  .rune-prose h3 {
+    font: 600 1.125rem/1.4 var(--font-dm-sans), sans-serif;
+    margin: var(--space-8) 0 var(--space-3);
+  }
+  .rune-prose p {
+    margin-bottom: var(--space-5);
+  }
+  .rune-prose a {
+    color: var(--rune-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rune-accent-dim);
+    transition: border-color 0.15s;
+  }
+  .rune-prose a:hover {
+    border-color: var(--rune-accent);
+  }
+  .rune-prose ul,
+  .rune-prose ol {
+    padding-left: var(--space-6);
+    margin-bottom: var(--space-5);
+  }
+  .rune-prose li {
+    margin-bottom: var(--space-2);
+  }
+  .rune-prose blockquote {
+    border-left: 2px solid var(--rune-accent);
+    padding: var(--space-3) var(--space-5);
+    background: var(--rune-accent-subtle);
+    border-radius: 0 var(--rune-radius-md) var(--rune-radius-md) 0;
+    color: var(--rune-fg-muted);
+    font-style: italic;
+    margin: var(--space-6) 0;
+  }
+  .rune-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    margin: var(--space-6) 0;
+  }
+  .rune-prose th {
+    text-align: left;
+    font-size: 0.75rem;
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--rune-fg-muted);
+    border-bottom: 1px solid var(--rune-border-strong);
+    padding: var(--space-3) var(--space-4);
+  }
+  .rune-prose td {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--rune-border);
+  }
+  .rune-prose tr:hover td {
+    background: var(--rune-bg-subtle);
+  }
+
+  /* --- Feature Card Accent Line --- */
+  .feature-card {
+    position: relative;
+  }
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--rune-accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .feature-card:hover::after {
+    opacity: 1;
+  }
+
+  /* --- Docs Sidebar --- */
+  .docs-sidebar {
+    width: 240px;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: var(--space-6) var(--space-4);
+    border-right: 1px solid var(--rune-border);
+  }
+  .sidebar-link.active {
+    color: var(--rune-accent);
+    background: var(--rune-accent-subtle);
+    border-left: 2px solid var(--rune-accent);
+    padding-left: calc(var(--space-3) - 2px);
+  }
+
+  /* --- Docs TOC --- */
+  .docs-toc {
+    width: 200px;
+    position: sticky;
+    top: 64px;
+    height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: var(--space-6) var(--space-4);
+    font-size: 0.8125rem;
+    font-family: var(--font-dm-sans), sans-serif;
+  }
+  .toc-label {
+    font-family: var(--font-jetbrains-mono), monospace;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--rune-fg-faint);
+    margin-bottom: var(--space-3);
+  }
+  .toc-link {
+    display: block;
+    color: var(--rune-fg-muted);
+    padding: 3px 0 3px 12px;
+    border-left: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    line-height: 1.5;
+  }
+  .toc-link:hover {
+    color: var(--rune-fg-base);
+  }
+  .toc-link.active {
+    color: var(--rune-accent);
+    border-left-color: var(--rune-accent);
+  }
+}
+
+/* ==========================================================================
+   ANIMATIONS — DESIGN.md §6
+   ========================================================================== */
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow  { animation: slideUp 0.4s ease-out 0.1s both; }
+.hero-headline { animation: slideUp 0.5s ease-out 0.2s both; }
+.hero-subtext  { animation: slideUp 0.4s ease-out 0.35s both; }
+.hero-cta      { animation: slideUp 0.4s ease-out 0.5s both; }
