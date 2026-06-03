@@ -204,42 +204,37 @@ export function CompilerJourneySection() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      const height = rect.height
-      const top = -rect.top // how much has been scrolled past the top of the container
+      const viewportCenter = window.innerHeight / 2
+      let closestStage = "source"
+      let minDistance = Infinity
 
-      if (top < 0) {
-        setActiveStage("source")
-        return
-      }
+      STAGES.forEach((stage) => {
+        const el = document.getElementById(`stage-${stage.id}`)
+        if (el) {
+          const rect = el.getBoundingClientRect()
+          const cardCenter = rect.top + rect.height / 2
+          const distance = Math.abs(cardCenter - viewportCenter)
+          if (distance < minDistance) {
+            minDistance = distance
+            closestStage = stage.id
+          }
+        }
+      })
 
-      // Map progress to steps
-      const progress = top / (height - window.innerHeight)
-      if (progress < 0.2) {
-        setActiveStage("source")
-      } else if (progress < 0.4) {
-        setActiveStage("lexer")
-      } else if (progress < 0.6) {
-        setActiveStage("ast")
-      } else if (progress < 0.8) {
-        setActiveStage("runtime")
-      } else {
-        setActiveStage("output")
-      }
+      setActiveStage(closestStage)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // Initialize correctly on mount
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const handleStageSelect = (stageId: string) => {
     setActiveStage(stageId)
-    // Scroll the viewport to center the respective stage content manually if clicked
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      const scrollIndex = STAGES.findIndex(s => s.id === stageId)
-      const scrollPos = window.scrollY + rect.top + (scrollIndex * (rect.height / STAGES.length)) * 0.75
+    const el = document.getElementById(`stage-${stageId}`)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      const scrollPos = window.scrollY + rect.top - (window.innerHeight / 2) + (rect.height / 2)
       window.scrollTo({ top: scrollPos, behavior: "smooth" })
     }
   }
@@ -355,7 +350,7 @@ export function CompilerJourneySection() {
         <div className="lg:col-span-7 flex flex-col gap-16 lg:py-16">
 
           {/* Stage 1: Source */}
-          <div className={cn(
+          <div id="stage-source" className={cn(
             "p-6 rounded-lg border transition-all duration-300",
             activeStage === "source"
               ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
@@ -381,7 +376,7 @@ export function CompilerJourneySection() {
           </div>
 
           {/* Stage 2: Lexer Tokens */}
-          <div className={cn(
+          <div id="stage-lexer" className={cn(
             "p-6 rounded-lg border transition-all duration-300",
             activeStage === "lexer"
               ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
@@ -417,7 +412,7 @@ export function CompilerJourneySection() {
           </div>
 
           {/* Stage 3: AST Nodes */}
-          <div className={cn(
+          <div id="stage-ast" className={cn(
             "p-6 rounded-lg border transition-all duration-300",
             activeStage === "ast"
               ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
@@ -462,7 +457,7 @@ export function CompilerJourneySection() {
           </div>
 
           {/* Stage 4: Interpreter Stack */}
-          <div className={cn(
+          <div id="stage-runtime" className={cn(
             "p-6 rounded-lg border transition-all duration-300",
             activeStage === "runtime"
               ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
@@ -493,7 +488,7 @@ export function CompilerJourneySection() {
           </div>
 
           {/* Stage 5: Output */}
-          <div className={cn(
+          <div id="stage-output" className={cn(
             "p-6 rounded-lg border transition-all duration-300",
             activeStage === "output"
               ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
