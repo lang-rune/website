@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
 import { ArrowRight, RotateCcw } from "lucide-react"
+import { renderHighlightedCode } from "@/lib/rune-grammar/scope-mapping"
 
 interface ExecutionStep {
   label: string
@@ -143,7 +144,7 @@ export function ClosureExplorerSection() {
                     <span className="text-[var(--rune-fg-faint)] select-none text-[10px] w-4 text-right">
                       {lineNum}
                     </span>
-                    <pre className="whitespace-pre">{line}</pre>
+                    <pre className="whitespace-pre">{renderHighlightedCode(line, "rune")}</pre>
                   </div>
                 )
               })}
