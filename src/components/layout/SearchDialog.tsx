@@ -65,7 +65,7 @@ export function SearchDialog() {
 
     window.addEventListener("keydown", down)
     window.addEventListener("open-search", handleOpenEvent)
-    
+
     return () => {
       window.removeEventListener("keydown", down)
       window.removeEventListener("open-search", handleOpenEvent)
@@ -92,13 +92,13 @@ export function SearchDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent 
+      <DialogContent
         showCloseButton={false}
-        className="max-w-lg p-0 bg-[var(--rune-bg-raised)] border border-[var(--rune-border-strong)] rounded-lg overflow-hidden shadow-2xl"
+        className="md:max-w-2xl sm:max-w-lg max-w-md p-0 bg-[var(--rune-bg-raised)] border border-[var(--rune-border-strong)] rounded-lg overflow-hidden shadow-2xl"
       >
-        <DialogTitle className="sr-only">Search Documentation</DialogTitle>
-        
-        <Command 
+        <DialogTitle className="sr-only">Rune Search</DialogTitle>
+
+        <Command
           label="Search Guide"
           className="flex flex-col h-full max-h-[420px] font-sans"
         >
@@ -151,7 +151,7 @@ export function SearchDialog() {
                         )}
                       </div>
                     </div>
-                    
+
                     <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1 text-[9px] font-mono text-[var(--rune-fg-faint)]">
                       Go <CornerDownLeft className="size-3" />
                     </span>

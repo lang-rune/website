@@ -198,7 +198,7 @@ const STAGES = [
 export function CompilerJourneySection() {
   const [activeSnippet, setActiveSnippet] = React.useState<Snippet>(SNIPPETS[0])
   const [activeStage, setActiveStage] = React.useState<string>("source")
-  
+
   // Custom scrolling detection inside ref wrapper
   const containerRef = React.useRef<HTMLDivElement>(null)
 
@@ -208,7 +208,7 @@ export function CompilerJourneySection() {
       const rect = containerRef.current.getBoundingClientRect()
       const height = rect.height
       const top = -rect.top // how much has been scrolled past the top of the container
-      
+
       if (top < 0) {
         setActiveStage("source")
         return
@@ -246,7 +246,7 @@ export function CompilerJourneySection() {
 
   return (
     <div ref={containerRef} className="relative min-h-[220vh] w-full max-w-[var(--rune-max-wide)] mx-auto px-4 py-20">
-      
+
       <div className="text-center mb-16 max-w-2xl mx-auto">
         <span className="text-[var(--rune-xs)] font-mono text-[var(--rune-accent)] uppercase tracking-widest">
           Signature Interactive
@@ -260,10 +260,10 @@ export function CompilerJourneySection() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start relative">
-        
+
         {/* LEFT COLUMN: STICKY CODE EDITOR (50vh) */}
-        <div className="lg:col-span-5 lg:sticky lg:top-24 w-full flex flex-col gap-4 z-20">
-          
+        <div className="lg:col-span-5 lg:sticky lg:top-28 w-full flex flex-col gap-4 z-20">
+
           {/* Curated Snippets Tabs */}
           <div className="flex gap-2 p-1 rounded-md border border-[var(--rune-border)] bg-[var(--rune-bg-raised)]">
             {SNIPPETS.map((snip) => (
@@ -284,7 +284,7 @@ export function CompilerJourneySection() {
 
           {/* Code Editor Box */}
           <div className="rounded-lg border border-[var(--rune-border)] bg-[var(--rune-bg-raised)] overflow-hidden">
-            
+
             {/* Header tab */}
             <div className="flex items-center justify-between px-4 py-2.5 border-b border-[var(--rune-border)] bg-[var(--rune-bg-overlay)]">
               <span className="text-xs font-mono text-[var(--rune-fg-muted)] flex items-center gap-1.5">
@@ -313,7 +313,7 @@ export function CompilerJourneySection() {
                 )}
               </AnimatePresence>
             </div>
-            
+
             {/* Footer console */}
             <div className="px-4 py-2 bg-[var(--rune-bg-subtle)] border-t border-[var(--rune-border)] flex items-center justify-between text-xs font-mono">
               <span className="text-[var(--rune-fg-muted)]">Console Status</span>
@@ -339,8 +339,8 @@ export function CompilerJourneySection() {
                   onClick={() => handleStageSelect(s.id)}
                   className={cn(
                     "w-2 h-2 rounded-full border border-transparent transition-all",
-                    activeStage === s.id 
-                      ? "bg-[var(--rune-accent)] scale-125" 
+                    activeStage === s.id
+                      ? "bg-[var(--rune-accent)] scale-125"
                       : "bg-[var(--rune-fg-faint)] hover:bg-[var(--rune-fg-muted)]"
                   )}
                   title={s.label}
@@ -353,12 +353,12 @@ export function CompilerJourneySection() {
 
         {/* RIGHT COLUMN: SCROLLING COMPILER STAGES */}
         <div className="lg:col-span-7 flex flex-col gap-16 lg:py-16">
-          
+
           {/* Stage 1: Source */}
           <div className={cn(
             "p-6 rounded-lg border transition-all duration-300",
-            activeStage === "source" 
-              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]" 
+            activeStage === "source"
+              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
               : "border-[var(--rune-border)] bg-transparent opacity-40"
           )}>
             <div className="flex items-center gap-2 text-sm font-mono text-[var(--rune-accent)] font-semibold mb-2">
@@ -367,10 +367,10 @@ export function CompilerJourneySection() {
             <p className="text-xs text-[var(--rune-fg-muted)] mb-4">{STAGES[0].desc}</p>
             <div className="p-3 bg-[var(--rune-bg-subtle)] border border-[var(--rune-border)] rounded text-xs font-mono text-[var(--rune-fg-base)] leading-relaxed select-all">
               {Array.from(activeSnippet.code).map((char, i) => (
-                <span 
+                <span
                   key={i}
                   className={cn(
-                    "transition-all duration-150", 
+                    "transition-all duration-150",
                     activeStage === "source" && "text-[var(--rune-accent)] bg-[var(--rune-accent-subtle)] font-bold"
                   )}
                 >
@@ -383,15 +383,15 @@ export function CompilerJourneySection() {
           {/* Stage 2: Lexer Tokens */}
           <div className={cn(
             "p-6 rounded-lg border transition-all duration-300",
-            activeStage === "lexer" 
-              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]" 
+            activeStage === "lexer"
+              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
               : "border-[var(--rune-border)] bg-transparent opacity-40"
           )}>
             <div className="flex items-center gap-2 text-sm font-mono text-[var(--rune-accent)] font-semibold mb-2">
               <Cpu className="size-4" /> {STAGES[1].label}
             </div>
             <p className="text-xs text-[var(--rune-fg-muted)] mb-4">{STAGES[1].desc}</p>
-            
+
             <div className="flex flex-wrap gap-2 max-h-[180px] overflow-y-auto p-1">
               {activeSnippet.tokens.map((token, index) => (
                 <motion.span
@@ -419,15 +419,15 @@ export function CompilerJourneySection() {
           {/* Stage 3: AST Nodes */}
           <div className={cn(
             "p-6 rounded-lg border transition-all duration-300",
-            activeStage === "ast" 
-              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]" 
+            activeStage === "ast"
+              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
               : "border-[var(--rune-border)] bg-transparent opacity-40"
           )}>
             <div className="flex items-center gap-2 text-sm font-mono text-[var(--rune-accent)] font-semibold mb-2">
               <Code className="size-4" /> {STAGES[2].label}
             </div>
             <p className="text-xs text-[var(--rune-fg-muted)] mb-4">{STAGES[2].desc}</p>
-            
+
             <div className="flex flex-col gap-2 font-mono text-xs max-h-[220px] overflow-y-auto pl-2 border-l border-[var(--rune-border-strong)]">
               {activeSnippet.ast.map((node) => {
                 // Calculate tree nesting level
@@ -464,8 +464,8 @@ export function CompilerJourneySection() {
           {/* Stage 4: Interpreter Stack */}
           <div className={cn(
             "p-6 rounded-lg border transition-all duration-300",
-            activeStage === "runtime" 
-              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]" 
+            activeStage === "runtime"
+              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
               : "border-[var(--rune-border)] bg-transparent opacity-40"
           )}>
             <div className="flex items-center gap-2 text-sm font-mono text-[var(--rune-accent)] font-semibold mb-2">
@@ -495,8 +495,8 @@ export function CompilerJourneySection() {
           {/* Stage 5: Output */}
           <div className={cn(
             "p-6 rounded-lg border transition-all duration-300",
-            activeStage === "output" 
-              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]" 
+            activeStage === "output"
+              ? "border-[var(--rune-accent-dim)] bg-[var(--rune-bg-raised)] shadow-[0_0_15px_var(--rune-accent-subtle)]"
               : "border-[var(--rune-border)] bg-transparent opacity-40"
           )}>
             <div className="flex items-center gap-2 text-sm font-mono text-[var(--rune-accent)] font-semibold mb-2">

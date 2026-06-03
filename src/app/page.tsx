@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[var(--rune-bg-base)] text-[var(--rune-fg-base)] overflow-x-hidden selection:bg-[var(--rune-accent-subtle)] selection:text-[var(--rune-accent)] flex flex-col justify-between">
+    <div className="relative min-h-screen bg-[var(--rune-bg-base)] text-[var(--rune-fg-base)] overflow-x-clip selection:bg-[var(--rune-accent-subtle)] selection:text-[var(--rune-accent)] flex flex-col justify-between">
       
       {/* 1. Grain overlay background layer */}
       <div 
