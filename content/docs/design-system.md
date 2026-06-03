@@ -1,6 +1,8 @@
-# Rune Design System
+---
+title: Rune Design System
+description: Reference for all design tokens, typography, and component patterns used across the Rune Lang website. All values derive from DESIGN.md.
+---
 
-Reference for all design tokens, typography, and component patterns used across the Rune Lang website. All values derive from `DESIGN.md`.
 
 ---
 
