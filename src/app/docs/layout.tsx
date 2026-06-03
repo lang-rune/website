@@ -10,20 +10,26 @@ import "fumadocs-ui/style.css";
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <RootProvider>
-      <DocsLayout 
-        tree={source.pageTree}
-        nav={{
-          component: <Header />,
-        }}
-      >
-        <div className="flex flex-col min-h-[calc(100vh-var(--fd-nav-height))] justify-between">
-          <div className="flex-grow">
-            {children}
-          </div>
-          <Footer />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-grow" style={{ "--fd-nav-height": "64px" } as React.CSSProperties}>
+          <DocsLayout
+            tree={source.pageTree}
+            nav={{
+              title: "Rune Language",
+              url: "/",
+            }}
+          >
+            <div className="flex flex-col min-h-[calc(100vh-var(--fd-nav-height))] justify-between">
+              <div className="flex-grow">
+                {children}
+              </div>
+              <Footer />
+            </div>
+          </DocsLayout>
         </div>
-      </DocsLayout>
+      </div>
       <SearchDialog />
     </RootProvider>
   );
-}
+}

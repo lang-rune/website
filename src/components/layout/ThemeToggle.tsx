@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useTheme } from "next-themes"
 import { motion, AnimatePresence } from "motion/react"
-import { Sun, Moon, Monitor } from "lucide-react"
+import { Sun, Moon } from "lucide-react"
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = React.useState(false)
@@ -24,8 +24,6 @@ export function ThemeToggle() {
   const handleToggle = () => {
     if (theme === "dark") {
       setTheme("light")
-    } else if (theme === "light") {
-      setTheme("system")
     } else {
       setTheme("dark")
     }
@@ -33,14 +31,12 @@ export function ThemeToggle() {
 
   const currentIcon = () => {
     if (theme === "light") return <Sun className="size-4" />
-    if (theme === "dark") return <Moon className="size-4" />
-    return <Monitor className="size-4" />
+    return <Moon className="size-4" />
   }
 
   const themeLabel = () => {
     if (theme === "light") return "Light Theme active"
-    if (theme === "dark") return "Dark Theme active"
-    return "System Theme active"
+    return "Dark Theme active"
   }
 
   return (
