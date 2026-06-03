@@ -9,6 +9,7 @@ export function Footer() {
     {
       title: "Rune",
       links: [
+        { label: "Downloads", url: "/downloads" },
         { label: "Documentation", url: "/docs/getting-started/introduction" },
         { label: "Compiler Roadmap", url: "/roadmap" },
         { label: "Language Guide", url: "/docs/language-guide/variables" },
@@ -25,9 +26,9 @@ export function Footer() {
     {
       title: "VS Code",
       links: [
-        { label: "Tooling Extension", url: "https://github.com/lang-rune/vscode" },
-        { label: "Source files", url: "https://github.com/lang-rune/vscode" },
-        { label: "Installation Guide", url: "https://github.com/lang-rune/vscode" },
+        { label: "Install Extension", url: "vscode:extension/kjxcodez.rune" },
+        { label: "Marketplace Listing", url: "https://marketplace.visualstudio.com/items?itemName=kjxcodez.rune" },
+        { label: "Extension Source", url: "https://github.com/lang-rune/vscode" },
       ]
     }
   ]

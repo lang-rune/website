@@ -81,19 +81,49 @@ export function EcosystemSection() {
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-[var(--rune-border)] flex items-center justify-between">
-              <span className="text-[10px] font-mono text-[var(--rune-fg-muted)] group-hover:text-[var(--rune-fg-base)] transition-colors">
-                View Source Files
-              </span>
-              <a
-                href={repo.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded border border-[var(--rune-border-strong)] text-[var(--rune-fg-muted)] group-hover:border-[var(--rune-accent)] group-hover:text-[var(--rune-accent)] bg-transparent transition-all"
-              >
-                <ExternalLink className="size-3.5" />
-              </a>
-            </div>
+            {repo.title === "rune-vscode" ? (
+              <div className="mt-6 pt-4 border-t border-[var(--rune-border)] flex flex-col gap-3">
+                <a
+                  href="vscode:extension/kjxcodez.rune"
+                  className="w-full py-2 px-3 rounded bg-[var(--rune-accent)] text-[#0A0A0B] hover:bg-[var(--rune-accent-dim)] transition-colors text-center text-xs font-mono font-semibold"
+                >
+                  Install in VS Code
+                </a>
+                <div className="flex justify-between items-center text-[10px] font-mono">
+                  <a
+                    href="https://marketplace.visualstudio.com/items?itemName=kjxcodez.rune"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] transition-colors"
+                  >
+                    Marketplace Listing
+                  </a>
+                  <a
+                    href={repo.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--rune-fg-muted)] hover:text-[var(--rune-accent)] transition-colors"
+                    title="View GitHub Repository"
+                  >
+                    <ExternalLink className="size-3" />
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-6 pt-4 border-t border-[var(--rune-border)] flex items-center justify-between">
+                <span className="text-[10px] font-mono text-[var(--rune-fg-muted)] group-hover:text-[var(--rune-fg-base)] transition-colors">
+                  View Source Files
+                </span>
+                <a
+                  href={repo.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-1.5 rounded border border-[var(--rune-border-strong)] text-[var(--rune-fg-muted)] group-hover:border-[var(--rune-accent)] group-hover:text-[var(--rune-accent)] bg-transparent transition-all"
+                >
+                  <ExternalLink className="size-3.5" />
+                </a>
+              </div>
+            )}
 
           </motion.div>
         ))}

@@ -35,6 +35,7 @@ export function Header() {
   // Navigation Links
   const navLinks = [
     { label: "Docs", url: "/docs/getting-started/introduction", matches: "/docs" },
+    { label: "Downloads", url: "/downloads", matches: "/downloads" },
     { label: "Roadmap", url: "/roadmap", matches: "/roadmap" },
   ]
 

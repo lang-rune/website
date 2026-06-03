@@ -3,42 +3,93 @@ title: Quick Start
 description: Get up and running with Rune in less than five minutes.
 ---
 
-Once you have Rune set up locally, you can start writing and executing Rune files immediately.
+Once you have the compiler installed and added to your `PATH`, you can write and execute Rune programs immediately.
 
-## Running a File
+---
 
-Rune source files typically end with the `.rune` extension. Create a file named `hello.rune` with the following content:
+## 1. Writing Your First File
+
+Rune source files typically use the `.rn` or `.rune` extension. 
+
+Create a file named `hello.rn` in any folder with the following content:
 
 ```rune
-# hello.rune
-set name = "Explorer"
-write("Hello,", name)
+# hello.rn
+set message = "hello explorer"
+write(message)
 ```
 
-Run the file from the root directory of the repository using:
+Run the file using the native `rune` CLI command in your terminal:
 
 ```bash
-python -m rune.cli.main hello.rune
+rune hello.rn
 ```
 
 Output:
 ```
-Hello, Explorer
+hello explorer
 ```
 
 ---
 
-## Interactive REPL
+## 2. Language Basics
 
-Rune includes an interactive Read-Eval-Print Loop (REPL) for quick code experimentation.
+Here is a quick overview of variables, spells, and loops in Rune.
 
-Start the REPL by running the CLI runner with no arguments:
+### Variables
 
-```bash
-python -m rune.cli.main
+Declare and reassign variables using the `set` keyword:
+
+```rune
+set name = "Kapil"
+write("Name is: ", name)
+
+# Reassignment:
+set name = "Rune Developer"
+write("Updated name is: ", name)
 ```
 
-You will see an interactive prompt where you can execute statements:
+### Spells (Functions)
+
+Define callable functions (spells) using the `spell` keyword. Parameters can be comma-separated or space-separated:
+
+```rune
+spell greet(name) {
+    write("Hello, ", name)
+}
+
+greet("explorer")
+```
+
+### Control Flow & Loops
+
+Test conditions using `if` and `otherwise` blocks. Loop using `while`, `repeat`, or `count`:
+
+```rune
+# Repeat block a fixed number of times:
+repeat 3 times {
+    write("Rune is running")
+}
+
+# Iterate over a numeric range:
+count from 1 to 3 as i {
+    write("Step: ", i)
+}
+```
+
+---
+
+## 3. Interactive REPL
+
+Rune includes an interactive Read-Eval-Print Loop (REPL) for quick code testing.
+
+Start the REPL by typing the compiler command with no arguments:
+
+```bash
+rune
+```
+
+You will see the interactive prompt:
 
 ```
 Rune REPL (v0.2.0)

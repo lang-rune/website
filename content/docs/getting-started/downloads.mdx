@@ -1,0 +1,85 @@
+---
+title: Downloads
+description: Obtain the latest stable release of Rune, install the editor extension, or access the source code.
+---
+
+Rune is distributed as a pre-compiled native Windows executable (`.exe`) with zero runtime dependencies. If you prefer to edit files in your editor, you can install the official VS Code extension.
+
+---
+
+## Latest Stable Release
+
+The latest stable release of the Rune compiler is **v0.2.0**.
+
+### Windows (x64)
+
+* **Architecture:** Windows 64-bit (`x86_64`)
+* **Package:** Portable ZIP Archive
+* **Executable:** `rune.exe`
+* **Release Page:** [v0.2.0 Release](https://github.com/lang-rune/rune/releases/tag/v0.2.0)
+
+<div className="my-6">
+  <a
+    href="https://github.com/lang-rune/rune/releases/download/v0.2.0/rune-v0.2.0-windows-x64.zip"
+    className="inline-flex items-center justify-center px-5 py-2.5 rounded bg-[var(--rune-accent)] text-[#0A0A0B] font-semibold text-xs transition-colors hover:bg-[var(--rune-accent-dim)]"
+  >
+    Download compiler (Windows x64 ZIP)
+  </a>
+</div>
+
+> [!NOTE]
+> The compiler executable is portable. You do not need to run an installer. Simply extract the archive and run the executable directly.
+
+---
+
+## VS Code Extension
+
+Author Rune files with full syntax highlighting, automatic indentation, and execution terminal shortcuts.
+
+* **Marketplace ID:** `kjxcodez.rune`
+
+<div className="my-6 flex flex-wrap gap-3">
+  <a
+    href="vscode:extension/kjxcodez.rune"
+    className="inline-flex items-center justify-center px-5 py-2.5 rounded bg-[var(--rune-accent)] text-[#0A0A0B] font-semibold text-xs transition-colors hover:bg-[var(--rune-accent-dim)]"
+  >
+    Install in VS Code
+  </a>
+  <a
+    href="https://marketplace.visualstudio.com/items?itemName=kjxcodez.rune"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center justify-center px-5 py-2.5 rounded border border-[var(--rune-border-strong)] text-[var(--rune-fg-base)] font-mono text-xs transition-colors hover:border-[var(--rune-accent)] hover:text-[var(--rune-accent)]"
+  >
+    View Marketplace Listing
+  </a>
+</div>
+
+### Installation Instructions
+
+1. Open **Visual Studio Code**.
+2. Click on the **Extensions** icon in the Activity Bar on the side of VS Code or press `Ctrl+Shift+X` (`Cmd+Shift+X` on macOS).
+3. Search for **Rune Language**.
+4. Click **Install**.
+
+---
+
+## Source Code
+
+Rune is open source under the MIT License. You can inspect, modify, and build the compiler or tooling yourself:
+
+* **Compiler & Core Runtime:** [lang-rune/rune](https://github.com/lang-rune/rune)
+* **Documentation Website:** [lang-rune/website](https://github.com/lang-rune/website)
+* **VS Code Editor Extension:** [lang-rune/vscode](https://github.com/lang-rune/vscode)
+
+---
+
+## Platform Support
+
+Rune's compiler executable is compiled native for Windows. Support for other platforms is on the roadmap:
+
+| Platform | Architecture | Status |
+|---|---|---|
+| **Windows** | `x64` | **Supported** (Pre-compiled native binary) |
+| **Linux** | `x64` / `ARM64` | *Planned* (Requires contributor compile passes) |
+| **macOS** | Apple Silicon / Intel | *Planned* (Requires compiler tooling build hosts) |
