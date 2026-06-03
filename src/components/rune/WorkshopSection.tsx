@@ -178,7 +178,7 @@ export function WorkshopSection() {
   const EASE_EXPO_OUT = [0.16, 1, 0.3, 1] as const
 
   return (
-    <section className="relative py-24 px-4 overflow-hidden max-w-[var(--rune-max-wide)] mx-auto">
+    <section className="relative py-24 px-4 overflow-hidden max-w-[var(--rune-max-wide)] mx-auto z-[99999]">
       
       <div className="text-center mb-16 max-w-2xl mx-auto">
         <span className="text-[var(--rune-xs)] font-mono text-[var(--rune-accent)] uppercase tracking-widest">
@@ -249,7 +249,7 @@ export function WorkshopSection() {
               animate={{ x: "0%" }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.5, ease: EASE_EXPO_OUT }}
-              className="fixed top-0 right-0 bottom-0 w-full max-w-xl bg-[var(--rune-bg-raised)] border-l border-[var(--rune-border-strong)] z-50 p-6 flex flex-col justify-between"
+              className="fixed top-14 right-0 bottom-0 w-full max-w-xl bg-[var(--rune-bg-raised)] border-l border-[var(--rune-border-strong)] z-[999] p-6 flex flex-col justify-between max-h-[92dvh] overflow-hidden"
             >
               <div>
                 

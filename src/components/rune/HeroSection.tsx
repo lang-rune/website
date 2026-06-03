@@ -42,7 +42,7 @@ export function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-[90vh] py-20 px-4 overflow-hidden">
       <div className="w-full max-w-[720px] flex flex-col items-center text-center z-10">
-        
+
         {/* Phase 1: Interactive Glyph Logo */}
         <div className="relative mb-8 h-20 w-20 flex items-center justify-center">
           <svg
@@ -62,9 +62,9 @@ export function HeroSection() {
               }}
             />
           </svg>
-          
+
           {/* Subtle surrounding glow ring */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 rounded-full border border-[var(--rune-accent-dim)] opacity-20"
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1.1, opacity: 0.15 }}
@@ -93,7 +93,7 @@ export function HeroSection() {
             )}
 
             {phase === "tokens" && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="flex flex-wrap gap-2 items-center"
@@ -113,7 +113,7 @@ export function HeroSection() {
             )}
 
             {phase === "reveal" && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="text-[var(--rune-fg-muted)] leading-relaxed"
@@ -145,7 +145,7 @@ export function HeroSection() {
               }}
               className="flex flex-col items-center"
             >
-              <motion.h1 
+              <motion.h1
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   show: { opacity: 1, y: 0 }
@@ -175,8 +175,8 @@ export function HeroSection() {
                 transition={{ duration: 0.8, ease: EASE_EXPO_OUT }}
                 className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full"
               >
-                <Button asChild className="w-full sm:w-auto bg-[var(--rune-accent)] text-[#0A0A0B] hover:bg-[var(--rune-accent-dim)] font-semibold transition-all">
-                  <a href="https://github.com/rune-lang/rune" target="_blank" rel="noopener noreferrer">
+                <Button asChild className="w-full sm:w-auto bg-[var(--rune-accent)] text-[#0A0A0B] hover:bg-[var(--rune-accent-dim)] font-semibold transition-all text-background">
+                  <a href="https://github.com/lang-rune/rune" target="_blank" rel="noopener noreferrer">
                     Explore the Source <ArrowRightIcon className="ml-1.5 size-4" />
                   </a>
                 </Button>

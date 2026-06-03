@@ -21,6 +21,8 @@ export function Header() {
   const pathname = usePathname()
   const [mobileOpen, setMobileOpen] = React.useState(false)
 
+  const [scrolled, setScrolled] = React.useState(false);
+
   // Listen to path changes to close mobile drawer
   React.useEffect(() => {
     setMobileOpen(false)
@@ -45,10 +47,18 @@ export function Header() {
     }
   }, [])
 
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full flex flex-col">
+    <header className={cn(scrolled ? "fixed" : "sticky", "top-0 z-40 w-full flex flex-col")}>
       {/* Primary Navigation Bar */}
-      <nav className="w-full h-[var(--fd-nav-height)] bg-[var(--rune-nav-bg)] backdrop-blur border-b border-[var(--rune-border)] px-4 sm:px-6 flex items-center justify-between transition-colors duration-200 min-h-16">
+      <nav className={cn("w-full h-[var(--fd-nav-height)] bg-[var(--rune-nav-bg)] backdrop-blur border-b border-[var(--rune-border)] px-4 md:px-24 sm:px-6 flex items-center justify-between transition-colors duration-200 min-h-16", scrolled ? "shadow-md" : "shadow-none")}>
 
         {/* Left Side: Logo Link */}
         <div className="flex items-center gap-6">
