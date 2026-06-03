@@ -3,6 +3,7 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { Check, Copy } from "lucide-react"
+import { renderHighlightedCode } from "@/lib/rune-grammar/scope-mapping"
 
 interface RuneCodeBlockProps {
   children: string
@@ -48,7 +49,7 @@ export function RuneCodeBlock({
           )}
         </button>
         <pre className={cn(showLineNumbers && "rune-line-numbers")}>
-          <code>{children}</code>
+          <code>{renderHighlightedCode(children, language)}</code>
         </pre>
       </div>
     </div>

@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { X, Code, Terminal, Cpu, Settings } from "lucide-react"
+import { RuneCodeBlock } from "@/components/rune/RuneCodeBlock"
 
 interface WorkshopItem {
   id: string
@@ -257,21 +258,13 @@ export function WorkshopSection() {
                 </p>
 
                 {/* Code Block Container */}
-                <div className="rounded-md border border-[var(--rune-border)] bg-[var(--rune-bg-overlay)] overflow-hidden font-mono text-[11px] leading-relaxed">
-                  <div className="px-4 py-2 border-b border-[var(--rune-border)] bg-[var(--rune-bg-subtle)] flex items-center justify-between">
-                    <span className="text-[10px] text-[var(--rune-fg-muted)]">
-                      src/{selectedItem.filename}
-                    </span>
-                    <span className="text-[10px] text-[var(--rune-fg-faint)]">
-                      {selectedItem.lang.toUpperCase()}
-                    </span>
-                  </div>
-                  <div className="p-4 overflow-y-auto max-h-[50vh] text-[var(--rune-fg-base)] scrollbar-thin">
-                    <pre className="whitespace-pre">
-                      {selectedItem.code}
-                    </pre>
-                  </div>
-                </div>
+                <RuneCodeBlock
+                  language={selectedItem.lang}
+                  filename={`src/${selectedItem.filename}`}
+                  className="text-[11px] leading-relaxed max-h-[50vh] overflow-y-auto scrollbar-thin"
+                >
+                  {selectedItem.code}
+                </RuneCodeBlock>
 
               </div>
 

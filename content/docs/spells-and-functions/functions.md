@@ -11,7 +11,7 @@ In Rune, functions are called **spells**. They are first-class citizens, meaning
 
 You can assign a defined spell to a variable by referencing its identifier without parentheses:
 
-```
+```rune
 spell double(x) {
     return x * 2
 }
@@ -29,7 +29,7 @@ write(my_func(5)) # 10
 
 Spells can accept other spells as parameters. This allows for high-order logic structures:
 
-```
+```rune
 spell run_twice(func, value) {
     return func(func(value))
 }
@@ -47,7 +47,7 @@ write(run_twice(square, 3)) # 81 (3 * 3 = 9, then 9 * 9 = 81)
 
 Spells capture the environment scope in which they were defined. The returned spell holds onto a reference to its definition context, creating a closure:
 
-```
+```rune
 spell make_adder(n) {
     spell add(x) {
         return x + n

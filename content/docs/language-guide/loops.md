@@ -11,7 +11,7 @@ Rune supports three distinct types of loops for iterating blocks of code: `while
 
 The `while` loop runs as long as its condition evaluates to a truthy value:
 
-```
+```rune
 set count = 5
 while count > 0 {
     write(count)
@@ -26,7 +26,7 @@ while count > 0 {
 
 The `repeat` loop runs a block of code a fixed number of times. The loop count expression is evaluated once at the start:
 
-```
+```rune
 repeat 3 times {
     write("hello")
 }
@@ -41,7 +41,7 @@ The count value must evaluate to a `number`. Fractional values are automatically
 
 The `count` loop iterates a loop variable over an inclusive integer range. The increment/decrement step direction is determined automatically based on the range bounds:
 
-```
+```rune
 # Counting upwards:
 count from 1 to 5 as i {
     write(i)
@@ -66,7 +66,7 @@ All three loop variants support early iteration skips and loop termination:
 - `skip` — Skips the remainder of the current loop body iteration (similar to `continue`).
 - `stop` — Exits the loop block immediately (similar to `break`).
 
-```
+```rune
 count from 1 to 10 as i {
     if i == 5 {
         skip

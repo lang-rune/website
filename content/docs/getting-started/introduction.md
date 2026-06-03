@@ -7,7 +7,7 @@ Rune is a handcrafted, interpreted programming language designed for learning, e
 
 Rune uses plain-English keywords and a clean, consistent grammar that can be learned in an afternoon. It is a dynamically typed, interpreted language featuring closures, first-class functions (spells), and a small but complete standard library.
 
-```
+```rune
 spell greet(name) {
     write("Hello, " + name + "!")
 }

@@ -9,7 +9,7 @@ Variables in Rune store data values. Rune is dynamically typed, meaning a variab
 
 Variables are declared and assigned using the `set` keyword:
 
-```
+```rune
 set name = "Rune"
 set score = 100
 set active = yes
@@ -17,7 +17,7 @@ set active = yes
 
 There is no separate keyword for declaring a variable and reassigning it; the `set` keyword is used for both.
 
-```
+```rune
 set score = 0
 # Reassignment:
 set score = score + 10
@@ -35,7 +35,7 @@ Rune uses lexical scoping through a chain of parent-linked environments:
 - **Hoisting / Variable Lookup** — When looking up a variable (e.g. `write(x)`), the interpreter searches the current scope. If not found, it traverses up the parent chain until the global environment is reached.
 - **Assignment Limitation** — Because `set` always defines the variable on the current scope, assigning to a captured variable from an outer scope inside a spell defines a new local variable in the inner scope instead of modifying the outer scope.
 
-```
+```rune
 set x = 10
 
 spell check() {

@@ -11,7 +11,7 @@ Rune is a dynamically typed language with four core data types. Types are evalua
 
 All numbers in Rune are IEEE 754 double-precision floating-point values. Rune does not distinguish between integers and decimal numbers at the language level.
 
-```
+```rune
 set integer = 42
 set decimal = 3.14159
 set negative = -10
@@ -25,7 +25,7 @@ Whole values print without a decimal point (e.g., `42` instead of `42.0`).
 
 A word is a text string delimited by single or double quotes.
 
-```
+```rune
 set hello = "Hello, world!"
 set language = 'Rune'
 ```
@@ -48,7 +48,7 @@ Words support the following backslash escape sequences:
 
 Rune uses plain-English keywords `yes` and `no` for booleans (instead of `true` and `false`).
 
-```
+```rune
 set success = yes
 set failure = no
 ```
@@ -59,6 +59,6 @@ set failure = no
 
 The `empty` keyword represents the absence of a value (similar to `null` or `None` in other languages).
 
-```
+```rune
 set result = empty
 ```

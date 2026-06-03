@@ -11,7 +11,7 @@ Functions in Rune are called **spells** and are declared and invoked using a sim
 
 Spells are defined using the `spell` keyword, followed by the spell name, a parenthesized parameter list, and a block statement enclosed in braces `{}`:
 
-```
+```rune
 spell greet(name) {
     write("Greetings,", name)
 }
@@ -21,7 +21,7 @@ spell greet(name) {
 
 Parameters inside the parentheses can be space-separated or comma-separated. Both forms are valid:
 
-```
+```rune
 # Space-separated parameters (idiomatic):
 spell add(a b) {
     return a + b
@@ -42,7 +42,7 @@ You can invoke (call) a spell in two ways:
 1. **Direct Call** — Standard call syntax common in most languages.
 2. **Explicit Cast Call** — Prefixed with the `cast` keyword. Both forms are identical.
 
-```
+```rune
 # Direct call:
 greet("explorer")
 
@@ -56,7 +56,7 @@ cast greet("explorer")
 
 Use the `return` keyword to exit a spell early and return a value:
 
-```
+```rune
 spell max(a, b) {
     if a > b {
         return a

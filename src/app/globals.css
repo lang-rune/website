@@ -156,6 +156,15 @@
   --rune-accent-glow:   rgba(139, 94, 26, 0.12);
   --rune-accent-subtle: rgba(139, 94, 26, 0.06);
 
+  /* Syntax Highlighting overrides for readability */
+  --rune-syn-keyword:  #7C4DFF;
+  --rune-syn-string:   #388E3C;
+  --rune-syn-number:   #D35400;
+  --rune-syn-comment:  #607D8B;
+  --rune-syn-fn:       #1976D2;
+  --rune-syn-operator: #00838F;
+  --rune-syn-variable: #1A1A1F;
+
   --rune-nav-bg: rgba(245, 242, 236, 0.85);
   --primary-foreground: #F5F2EC;
 }
@@ -306,6 +315,16 @@
     padding: 1px 6px;
     color: var(--rune-accent);
   }
+
+  /* --- Syntax Highlighting Tokens --- */
+  .rune-token-keyword { color: var(--rune-syn-keyword); font-weight: 600; }
+  .rune-token-string { color: var(--rune-syn-string); }
+  .rune-token-number { color: var(--rune-syn-number); }
+  .rune-token-comment { color: var(--rune-syn-comment); font-style: italic; }
+  .rune-token-fn { color: var(--rune-syn-fn); }
+  .rune-token-operator { color: var(--rune-syn-operator); }
+  .rune-token-variable { color: var(--rune-syn-variable); }
+  .rune-token-boolean { color: var(--rune-syn-number); font-weight: 600; }
 
   /* --- Code Block --- */
   .rune-codeblock {

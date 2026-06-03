@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { cn } from "@/lib/utils"
 import { Check, Terminal, Code, Cpu, ChevronRight } from "lucide-react"
+import { renderHighlightedCode } from "@/lib/rune-grammar/scope-mapping"
 
 // Types & Data
 interface Snippet {
@@ -278,7 +279,7 @@ export function CompilerJourneySection() {
             {/* Code Content */}
             <div className="p-5 font-mono text-sm leading-relaxed overflow-x-auto text-[var(--rune-fg-base)] min-h-[160px] relative">
               <pre className="whitespace-pre">
-                {activeSnippet.code}
+                {renderHighlightedCode(activeSnippet.code, "rune")}
               </pre>
 
               {/* Cursor indicator overlay based on active stage */}

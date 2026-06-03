@@ -9,7 +9,7 @@ Once you have Rune set up locally, you can start writing and executing Rune file
 
 Rune source files typically end with the `.rune` extension. Create a file named `hello.rune` with the following content:
 
-```
+```rune
 # hello.rune
 set name = "Explorer"
 write("Hello,", name)

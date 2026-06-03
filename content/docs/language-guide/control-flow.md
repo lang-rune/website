@@ -11,7 +11,7 @@ Rune uses conditional structures to control execution flow.
 
 Rune uses `if` and `otherwise` (instead of `else` or `else if`) to construct conditional branches. Parentheses around the conditions are optional and braces `{}` are required.
 
-```
+```rune
 if score > 90 {
     write("Excellent!")
 } otherwise {
@@ -23,7 +23,7 @@ if score > 90 {
 
 You can chain multiple checks using `otherwise condition`:
 
-```
+```rune
 if temperature > 30 {
     write("Hot")
 } otherwise temperature > 15 {

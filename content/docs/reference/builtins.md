@@ -24,7 +24,7 @@ Rune includes a small set of built-in functions that are globally available with
 
 ### Converting Types
 
-```
+```rune
 set user_input = input("Enter score: ")
 set numeric_score = number(user_input)
 write("Double score is: ", numeric_score * 2)
@@ -32,7 +32,7 @@ write("Double score is: ", numeric_score * 2)
 
 ### Checking Types
 
-```
+```rune
 set x = yes
 write(type(x)) # boolean
 ```
