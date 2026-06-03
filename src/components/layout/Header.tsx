@@ -48,8 +48,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full flex flex-col">
       {/* Primary Navigation Bar */}
-      <nav className="w-full h-[var(--fd-nav-height)] bg-[var(--rune-nav-bg)] backdrop-blur border-b border-[var(--rune-border)] px-4 sm:px-6 flex items-center justify-between transition-colors duration-200">
-        
+      <nav className="w-full h-[var(--fd-nav-height)] bg-[var(--rune-nav-bg)] backdrop-blur border-b border-[var(--rune-border)] px-4 sm:px-6 flex items-center justify-between transition-colors duration-200 min-h-16">
+
         {/* Left Side: Logo Link */}
         <div className="flex items-center gap-6">
           {/* Logo switches to icon on very small screens */}
@@ -66,14 +66,14 @@ export function Header() {
                   href={link.url}
                   className={cn(
                     "text-xs font-mono transition-colors duration-150 px-2 py-1 rounded relative",
-                    isActive 
-                      ? "text-[var(--rune-accent)]" 
+                    isActive
+                      ? "text-[var(--rune-accent)]"
                       : "text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)]"
                   )}
                 >
                   {link.label}
                   {isActive && (
-                    <motion.div 
+                    <motion.div
                       layoutId="activeHeaderTab"
                       className="absolute bottom-0 left-2 right-2 h-0.5 bg-[var(--rune-accent)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -87,7 +87,7 @@ export function Header() {
 
         {/* Right Side: Search, Social, ThemeToggle */}
         <div className="flex items-center gap-3">
-          
+
           {/* Search Trigger Button */}
           <button
             onClick={triggerSearch}
@@ -158,7 +158,7 @@ export function Header() {
               className="fixed top-[var(--fd-nav-height)] right-0 bottom-0 w-64 bg-[var(--rune-bg-raised)] border-l border-[var(--rune-border-strong)] z-40 p-6 flex flex-col justify-between"
             >
               <div className="flex flex-col gap-6">
-                
+
                 {/* Header logo lockup inside drawer */}
                 <div className="flex items-center gap-2 pb-4 border-b border-[var(--rune-border)]">
                   <LogoLink variant="constrained" />
@@ -177,8 +177,8 @@ export function Header() {
                         href={link.url}
                         className={cn(
                           "px-3 py-2 rounded text-sm font-mono transition-colors",
-                          isActive 
-                            ? "bg-[var(--rune-accent-subtle)] border border-[var(--rune-accent-dim)] text-[var(--rune-accent)]" 
+                          isActive
+                            ? "bg-[var(--rune-accent-subtle)] border border-[var(--rune-accent-dim)] text-[var(--rune-accent)]"
                             : "text-[var(--rune-fg-muted)] hover:text-[var(--rune-fg-base)] border border-transparent"
                         )}
                       >
@@ -186,7 +186,7 @@ export function Header() {
                       </Link>
                     )
                   })}
-                  
+
                   {/* GitHub link inside drawer */}
                   <a
                     href="https://github.com/rune-lang/rune"
