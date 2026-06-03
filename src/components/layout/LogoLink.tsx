@@ -10,23 +10,31 @@ interface LogoLinkProps {
 
 export function LogoLink({ variant = "default", className }: LogoLinkProps) {
   return (
-    <Link 
-      href="/" 
+    <Link
+      href="/"
       className={cn(
-        "inline-flex items-center gap-2 select-none outline-none group/logo", 
+        "inline-flex items-center gap-2 select-none outline-none group/logo",
         className
       )}
     >
       {variant === "default" && (
-        <div className="relative w-28 h-8 flex items-center">
+        <div className="relative flex items-center justify-center gap-2">
           <Image
-            src="/logo.png"
-            alt="Rune Logo"
-            width={112}
-            height={32}
+            src="/icon.png"
+            alt="Rune Icon"
+            width={48}
+            height={48}
             priority
-            className="object-contain dark:brightness-100 brightness-0 dark:opacity-100 opacity-90 transition-all duration-300"
+            className="object-contain transition-all duration-300"
           />
+          <div className="flex flex-col items-center justify-start gap-0">
+            <span className="text-2xl font-bold tracking-wider leading-none font-sans">Rune</span>
+            <div className="flex items-center justify-center gap-1">
+              <span className="w-2 h-0.5 bg-[var(--rune-accent)]"></span>
+              <span className="text-sm font-bold tracking-tight leading-none font-sans">Lang</span>
+              <span className="w-2 h-0.5 bg-[var(--rune-accent)]"></span>
+            </div>
+          </div>
         </div>
       )}
 
@@ -35,10 +43,10 @@ export function LogoLink({ variant = "default", className }: LogoLinkProps) {
           <Image
             src="/icon.png"
             alt="Rune Icon"
-            width={32}
-            height={32}
+            width={48}
+            height={48}
             priority
-            className="object-contain dark:brightness-100 brightness-0 dark:opacity-100 opacity-90 transition-all duration-300"
+            className="object-contain transition-all duration-300"
           />
         </div>
       )}
@@ -49,14 +57,19 @@ export function LogoLink({ variant = "default", className }: LogoLinkProps) {
             <Image
               src="/icon.png"
               alt="Rune Icon"
-              width={32}
-              height={32}
-              className="object-contain dark:brightness-100 brightness-0 dark:opacity-100 opacity-90 transition-all duration-300"
+              width={48}
+              height={48}
+              className="object-contain transition-all duration-300"
             />
           </div>
-          <span className="font-display text-xl font-bold tracking-tight text-[var(--rune-fg-base)] group-hover/logo:text-[var(--rune-accent)] transition-colors duration-200">
-            Rune
-          </span>
+          <div className="flex flex-col items-center justify-start gap-0">
+            <span className="text-2xl font-bold tracking-wider leading-none font-sans">Rune</span>
+            <div className="flex items-center justify-center gap-1">
+              <span className="w-2 h-0.5 bg-[var(--rune-accent)]"></span>
+              <span className="text-sm font-bold tracking-tight leading-none font-sans">Lang</span>
+              <span className="w-2 h-0.5 bg-[var(--rune-accent)]"></span>
+            </div>
+          </div>
         </div>
       )}
     </Link>
